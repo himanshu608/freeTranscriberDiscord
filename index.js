@@ -2,7 +2,7 @@ require("dotenv").config();
 const  fetch =  require('node-fetch');
 const { Client , GatewayIntentBits,ActionRowBuilder, ButtonBuilder, ButtonStyle, Collector, MessageCollector,EmbedBuilder } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages , GatewayIntentBits.MessageContent ,GatewayIntentBits.DirectMessages,] });
-
+const keepAlive = require('./server.js');
 
 var auth ;
 const appId =process.env.APPID
@@ -98,7 +98,7 @@ client.on('ready', () => {
  });
  
  // Log In our bot
- client.login(process.env.TOKEN);
+
  
  
 
@@ -153,3 +153,6 @@ client.on("messageCreate", async (message)=>{
     
   })
 });
+
+client.login(process.env.TOKEN);
+keepAlive();
